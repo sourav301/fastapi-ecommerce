@@ -38,3 +38,4 @@ docker-compose.override.yml
 
 # Ignore compiled Python files and Jupyter notebooks
 *.ipynb_checkpoints
+migrations

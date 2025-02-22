@@ -1,17 +1,22 @@
 from fastapi import FastAPI
-from app.routers import product
+from contextlib import asynccontextmanager
 from app.core.database import engine, Base
 
-app = FastAPI()
-
-# Include routers
-app.include_router(product.router)
-
-# Create database tables (Run Alembic migrations instead in production)
-async def init_db():
+# Lifespan context manager
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup logic (like initializing DB)
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+    
+    yield  # Run the application
 
-@app.on_event("startup")
-async def startup():
-    await init_db()
+    # Shutdown logic (like closing DB connections)
+    await engine.dispose()
+
+# Initialize FastAPI app with lifespan
+app = FastAPI(lifespan=lifespan)
+
+# Import and include routes
+from app.routers import product
+app.include_router(product.router)
