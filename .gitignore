@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+venv/
+.env
+*.env
+
+# Database and migrations
+alembic/versions/
+*.sqlite3
+*.db
+
+# Logs and local runtime files
+logs/
+*.log
+*.pid
+*.lock
+*.cache
+
+# Pytest and test coverage reports
+.coverage
+htmlcov/
+pytest_cache/
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker and deployment
+docker-compose.override.yml
+*.tar
+*.gz
+
+# Ignore compiled Python files and Jupyter notebooks
+*.ipynb_checkpoints
