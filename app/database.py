@@ -8,8 +8,6 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine, autoflush=False)
 Base = declarative_base()
 
-Base.metadata.create_all(bind = engine)
-
 def get_db():
     db = SessionLocal()
     try:
