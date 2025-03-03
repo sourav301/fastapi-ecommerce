@@ -15,3 +15,17 @@ class Seller(BaseModel):
 
 class SellerResponse(Seller):
     id: int 
+
+
+class CoordinatesSchema(BaseModel):
+    latitude: float
+    longitude: float
+
+class SellerSchema(BaseModel):
+    id: int
+    name: str
+    contact: Optional[str] = None 
+    coordinates: Optional[CoordinatesSchema] = None  # Serialize coordinates properly
+
+    class Config:
+        from_attributes = True  # Allows automatic conversion from SQLAlchemy model

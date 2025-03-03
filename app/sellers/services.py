@@ -36,11 +36,11 @@ def add_product_seller(data, db):
 def get_sellers(db):
     sellers = db.query(SellerModel).all()
     seller_responses = []
-    for seller in sellers:
-        point = to_shape(seller.coordinates)
-        seller_responses.append(SellerResponse(id=seller.id,
-                                                name=seller.name,
-                                                contact=seller.contact,
+    for s in sellers:
+        point = to_shape(s.coordinates)
+        seller_responses.append(SellerResponse(id=s.id,
+                                                name=s.name,
+                                                contact=s.contact,
                                                 latitude=point.x,  # Assuming location is a geometry(Point) field
                                                 longitude=point.y))
     return seller_responses
