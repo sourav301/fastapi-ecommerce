@@ -41,7 +41,7 @@ def get_products_api(product_id: int,
 
     seller_list = []
     for row in result:
-        seller = row[0]  # Extract SellerModel
+        seller = row.SellerModel  # Extract SellerModel
         distance = row.distance  # Extract distance
 
         coordinates = None
