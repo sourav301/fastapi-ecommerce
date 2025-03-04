@@ -1,6 +1,6 @@
 
 from sqlalchemy import Column, String, Integer, DateTime, Float, func, ForeignKey
-from sqlalchemy.orm import Session, relationship
+from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import JSONB
 from app.database import Base
 
@@ -14,4 +14,6 @@ class ProductModel(Base):
     sellers = relationship("ProductSellerModel", back_populates="product")
     created_at = Column(DateTime, nullable=True, server_default=func.now())
     updated_at = Column(DateTime, nullable=True, server_default=func.now())
+
+    orders = relationship("OrderModel", back_populates="product")
  
